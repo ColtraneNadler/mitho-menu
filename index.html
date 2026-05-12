@@ -6,7 +6,7 @@
   <title>protein bar · carta — mitho wellness club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;900&family=Krub:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Krub:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -36,18 +36,18 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 72px 24px 56px;
+      padding: 64px 24px 48px;
       border-bottom: 1px solid rgba(59,59,59,0.12);
     }
 
     .hero__eyebrow {
       font-family: 'Krub', sans-serif;
       font-weight: 500;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--persimmon);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero__title {
@@ -61,13 +61,40 @@
     }
 
     .hero__subtitle {
-      margin-top: 20px;
+      margin-top: 18px;
       font-family: 'Raleway', sans-serif;
       font-weight: 500;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 8px;
       text-transform: uppercase;
       color: var(--sienna);
+    }
+
+    .hero__version {
+      margin-top: 10px;
+      font-family: 'Krub', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(59,59,59,0.35);
+    }
+
+    .hero__hours {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 16px;
+    }
+
+    .hero__hours span {
+      font-family: 'Krub', sans-serif;
+      font-size: 11px;
+      color: rgba(59,59,59,0.50);
+    }
+
+    .hero__hours strong {
+      color: var(--olive);
+      font-weight: 500;
     }
 
     .hero__dot {
@@ -76,10 +103,10 @@
       height: 6px;
       border-radius: 50%;
       background: var(--persimmon);
-      margin: 28px auto 0;
+      margin: 24px auto 0;
     }
 
-    /* ── NAV PILLS ── */
+    /* ── NAV ── */
     .nav {
       position: sticky;
       top: 0;
@@ -95,21 +122,21 @@
     .nav__inner {
       display: flex;
       gap: 4px;
-      padding: 12px 20px;
+      padding: 10px 20px;
       width: max-content;
     }
 
     .nav__pill {
       font-family: 'Krub', sans-serif;
       font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 2px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--olive);
       text-decoration: none;
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 100px;
-      border: 1px solid rgba(59,59,59,0.20);
+      border: 1px solid rgba(59,59,59,0.18);
       white-space: nowrap;
       transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
@@ -121,7 +148,7 @@
       color: var(--eggshell);
     }
 
-    /* ── MENU LAYOUT ── */
+    /* ── LAYOUT ── */
     .menu {
       max-width: 720px;
       margin: 0 auto;
@@ -129,153 +156,216 @@
     }
 
     /* ── SECTION ── */
-    .section {
-      padding-top: 64px;
-    }
+    .section { padding-top: 60px; }
 
-    .section__header {
-      margin-bottom: 32px;
-    }
+    .section__header { margin-bottom: 28px; }
 
     .section__label {
       display: block;
       font-family: 'Krub', sans-serif;
       font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 4px;
+      font-size: 9px;
+      letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--persimmon);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .section__title {
       font-family: 'Raleway', sans-serif;
       font-weight: 900;
-      font-size: 36px;
+      font-size: 34px;
       letter-spacing: -0.5px;
       color: var(--olive);
       text-transform: lowercase;
     }
 
-    .section__desc {
-      margin-top: 8px;
+    .section__sub {
       font-family: 'Krub', sans-serif;
-      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(59,59,59,0.40);
+      margin-top: 2px;
+    }
+
+    .section__desc {
+      margin-top: 10px;
+      font-family: 'Krub', sans-serif;
       font-size: 13px;
       line-height: 1.6;
+      color: rgba(59,59,59,0.55);
+    }
+
+    .section__note {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: rgba(197,191,217,0.25);
+      border-left: 2px solid var(--thistle);
+      border-radius: 0 8px 8px 0;
+      font-family: 'Krub', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
       color: rgba(59,59,59,0.60);
     }
 
     /* ── ITEMS ── */
-    .items {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .items { display: flex; flex-direction: column; gap: 2px; }
 
     .item {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 16px;
-      padding: 18px 20px;
+      padding: 16px 18px;
       border-radius: 12px;
-      background: transparent;
       transition: background 0.12s;
     }
 
-    .item:hover {
-      background: var(--pale-desert);
-    }
+    .item:hover { background: var(--pale-desert); }
 
-    .item__body {
-      flex: 1;
-    }
+    .item__body { flex: 1; }
 
     .item__name {
       font-family: 'Raleway', sans-serif;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--olive);
       letter-spacing: -0.2px;
-    }
-
-    .item__desc {
-      margin-top: 4px;
-      font-family: 'Krub', sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 1.55;
-      color: rgba(59,59,59,0.55);
-    }
-
-    .item__tags {
       display: flex;
+      align-items: center;
+      gap: 7px;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
     }
 
-    .item__tag {
+    .badge {
       font-family: 'Krub', sans-serif;
       font-weight: 500;
-      font-size: 9px;
+      font-size: 8px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 100px;
     }
+    .badge--house    { background: var(--thistle); color: var(--olive); }
+    .badge--new      { background: var(--persimmon); color: #fff; }
+    .badge--popular  { background: rgba(221,110,66,0.18); color: var(--sienna); }
 
-    .item__tag--thistle  { background: var(--thistle); color: var(--olive); }
-    .item__tag--sienna   { background: rgba(221,110,66,0.15); color: var(--sienna); }
-    .item__tag--persimmon { background: rgba(246,80,9,0.10); color: var(--persimmon); }
+    .item__desc {
+      margin-top: 3px;
+      font-family: 'Krub', sans-serif;
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(59,59,59,0.52);
+    }
 
     .item__price {
       font-family: 'Raleway', sans-serif;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       color: var(--olive);
       white-space: nowrap;
       flex-shrink: 0;
       padding-top: 2px;
     }
 
+    .item__price--tbd {
+      font-family: 'Krub', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      color: rgba(59,59,59,0.35);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 3px;
+      font-style: italic;
+    }
+
     /* ── DIVIDER ── */
     .divider {
       margin: 48px 0 0;
       border: none;
-      border-top: 1px solid rgba(59,59,59,0.10);
+      border-top: 1px solid rgba(59,59,59,0.09);
     }
 
-    /* ── EXTRAS CARD ── */
-    .extras-card {
-      margin-top: 64px;
+    /* ── BUILDER ── */
+    .builder-card {
+      margin-top: 12px;
       background: var(--pale-desert);
-      border-radius: 20px;
-      padding: 32px 28px;
+      border-radius: 18px;
+      padding: 28px 24px 32px;
     }
 
-    .extras-card__title {
+    .builder-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .builder-step {
+      background: rgba(250,243,221,0.70);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .builder-step__num {
+      font-family: 'Krub', sans-serif;
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--persimmon);
+      margin-bottom: 6px;
+    }
+
+    .builder-step__title {
       font-family: 'Raleway', sans-serif;
-      font-weight: 900;
-      font-size: 28px;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--olive);
+      margin-bottom: 10px;
       text-transform: lowercase;
-      letter-spacing: -0.3px;
-      margin-bottom: 20px;
+    }
+
+    .builder-step__options {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .builder-step__options li {
+      font-family: 'Krub', sans-serif;
+      font-size: 12px;
+      color: rgba(59,59,59,0.65);
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(59,59,59,0.07);
+    }
+
+    .builder-step__options li:last-child { border-bottom: none; }
+
+    /* ── EXTRAS GRID ── */
+    .extras-card {
+      margin-top: 60px;
+      background: var(--pale-desert);
+      border-radius: 18px;
+      padding: 28px 24px 32px;
     }
 
     .extras-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 6px;
+      margin-top: 20px;
     }
 
     .extra-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       padding: 10px 14px;
-      background: rgba(250,243,221,0.60);
+      background: rgba(250,243,221,0.65);
       border-radius: 10px;
     }
 
@@ -286,43 +376,60 @@
       color: var(--olive);
     }
 
+    .extra-item__desc {
+      font-family: 'Krub', sans-serif;
+      font-size: 10px;
+      color: rgba(59,59,59,0.45);
+      margin-top: 1px;
+    }
+
     .extra-item__price {
       font-family: 'Raleway', sans-serif;
       font-weight: 700;
       font-size: 12px;
       color: var(--sienna);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* ── FOOTER ── */
     footer {
-      margin-top: 80px;
-      padding: 40px 20px 48px;
+      margin-top: 72px;
+      padding: 36px 20px 48px;
       text-align: center;
       border-top: 1px solid rgba(59,59,59,0.10);
     }
 
-    footer .footer-brand {
+    .footer-brand {
       font-family: 'Raleway', sans-serif;
       font-weight: 900;
-      font-size: 22px;
+      font-size: 20px;
       color: var(--persimmon);
       text-transform: lowercase;
       letter-spacing: -0.5px;
     }
 
-    footer .footer-sub {
-      margin-top: 6px;
+    .footer-handle {
+      margin-top: 4px;
       font-family: 'Krub', sans-serif;
       font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(59,59,59,0.40);
+      letter-spacing: 2px;
+      color: rgba(59,59,59,0.35);
+    }
+
+    .footer-legal {
+      margin-top: 12px;
+      font-family: 'Krub', sans-serif;
+      font-size: 10px;
+      line-height: 1.6;
+      color: rgba(59,59,59,0.30);
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 480px) {
-      .extras-grid { grid-template-columns: 1fr; }
-      .hero { padding: 56px 20px 44px; }
+    @media (max-width: 520px) {
+      .builder-steps  { grid-template-columns: 1fr; }
+      .extras-grid    { grid-template-columns: 1fr; }
+      .hero { padding: 48px 20px 36px; }
     }
   </style>
 </head>
@@ -330,318 +437,706 @@
 
   <!-- HERO -->
   <header class="hero">
-    <span class="hero__eyebrow">mitho wellness club</span>
+    <span class="hero__eyebrow">mitho wellness club · bogotá</span>
     <h1 class="hero__title">protein bar</h1>
     <p class="hero__subtitle">— la carta —</p>
+    <p class="hero__version">v · primavera 26</p>
+    <div class="hero__hours">
+      <span><strong>lun – jue</strong> 6am – 9pm</span>
+      <span><strong>viernes</strong> 6am – 7pm</span>
+      <span><strong>sábados</strong> 7am – 3pm</span>
+      <span><strong>dom · festivos</strong> 8am – 1pm</span>
+    </div>
     <span class="hero__dot"></span>
   </header>
 
   <!-- NAV -->
   <nav class="nav" aria-label="Categorías">
     <div class="nav__inner">
-      <a class="nav__pill active" href="#shakes">Shakes</a>
-      <a class="nav__pill" href="#bowls">Bowls</a>
-      <a class="nav__pill" href="#smoothies">Smoothies</a>
-      <a class="nav__pill" href="#snacks">Snacks</a>
-      <a class="nav__pill" href="#bebidas">Bebidas</a>
-      <a class="nav__pill" href="#extras">Add-ons</a>
+      <a class="nav__pill active" href="#coffee">Coffee</a>
+      <a class="nav__pill" href="#tea">Tea &amp; Matcha</a>
+      <a class="nav__pill" href="#especiales">Especiales</a>
+      <a class="nav__pill" href="#softdrinks">Soft Drinks</a>
+      <a class="nav__pill" href="#shakes">Shakes</a>
+      <a class="nav__pill" href="#brunch">Brunch</a>
+      <a class="nav__pill" href="#armalo">Ármalo Tú</a>
+      <a class="nav__pill" href="#usuals">The Usuals</a>
+      <a class="nav__pill" href="#side">On the Side</a>
+      <a class="nav__pill" href="#extras">Extras</a>
     </div>
   </nav>
 
   <!-- MENU -->
   <main class="menu">
 
-    <!-- SHAKES -->
-    <section class="section" id="shakes">
+    <!-- I · COFFEE -->
+    <section class="section" id="coffee">
       <div class="section__header">
-        <span class="section__label">01</span>
-        <h2 class="section__title">protein shakes</h2>
-        <p class="section__desc">Batidos altos en proteína. Base de leche, leche de almendra o agua.</p>
+        <span class="section__label">i · café</span>
+        <h2 class="section__title">coffee.</h2>
+        <p class="section__sub">granos colombianos · tueste medio</p>
+        <p class="section__note">doble espresso de base. con leche, espresso sencillo. adición leche de almendras <strong>+$7.000</strong>.</p>
       </div>
       <div class="items">
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Classic Vanilla</p>
-            <p class="item__desc">Proteína de suero de leche, vainilla, plátano, leche de almendra</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">30g proteína</span>
-            </div>
+            <p class="item__name">espresso doble</p>
+            <p class="item__desc">dos shots, sin compañía. corto, intenso, redondo.</p>
           </div>
-          <span class="item__price">$12.000</span>
+          <span class="item__price">$8.800</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Chocolate Power</p>
-            <p class="item__desc">Proteína de cacao, mantequilla de maní, avena, leche</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">35g proteína</span>
-              <span class="item__tag item__tag--sienna">alto en fibra</span>
-            </div>
+            <p class="item__name">americano</p>
+            <p class="item__desc">espresso doble + agua caliente. taza grande.</p>
           </div>
-          <span class="item__price">$13.000</span>
+          <span class="item__price">$8.800</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Green Machine</p>
-            <p class="item__desc">Proteína vegetal, espinaca, manzana verde, jengibre, limón</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">28g proteína</span>
-              <span class="item__tag item__tag--persimmon">vegano</span>
-            </div>
-          </div>
-          <span class="item__price">$13.500</span>
-        </div>
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Strawberry Dream</p>
-            <p class="item__desc">Proteína de fresa, yogur griego, fresas frescas, miel</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">32g proteína</span>
-            </div>
-          </div>
-          <span class="item__price">$12.500</span>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- BOWLS -->
-    <section class="section" id="bowls">
-      <div class="section__header">
-        <span class="section__label">02</span>
-        <h2 class="section__title">bowls</h2>
-        <p class="section__desc">Bowls nutritivos para antes o después del entrenamiento.</p>
-      </div>
-      <div class="items">
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Açaí Power Bowl</p>
-            <p class="item__desc">Açaí, plátano, granola, semillas de chía, miel de agave, frutas frescas</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--persimmon">vegano</span>
-              <span class="item__tag item__tag--sienna">antioxidante</span>
-            </div>
-          </div>
-          <span class="item__price">$15.000</span>
-        </div>
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Protein Oat Bowl</p>
-            <p class="item__desc">Avena cocida, proteína de vainilla, plátano, mantequilla de almendra, cacao nibs</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">25g proteína</span>
-              <span class="item__tag item__tag--sienna">alto en fibra</span>
-            </div>
-          </div>
-          <span class="item__price">$14.000</span>
-        </div>
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Yogur Parfait</p>
-            <p class="item__desc">Yogur griego, granola artesanal, frutos rojos, semillas de lino</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">20g proteína</span>
-            </div>
-          </div>
-          <span class="item__price">$13.000</span>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- SMOOTHIES -->
-    <section class="section" id="smoothies">
-      <div class="section__header">
-        <span class="section__label">03</span>
-        <h2 class="section__title">smoothies</h2>
-        <p class="section__desc">Sin proteína añadida. Frescos, naturales, deliciosos.</p>
-      </div>
-      <div class="items">
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Tropical Refresh</p>
-            <p class="item__desc">Mango, piña, coco, limón, hierbabuena</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--persimmon">sin azúcar añadida</span>
-            </div>
+            <p class="item__name">macchiato</p>
+            <p class="item__desc">espresso sencillo, una nube de leche.</p>
           </div>
           <span class="item__price">$10.000</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Berry Blast</p>
-            <p class="item__desc">Fresas, arándanos, frambuesas, jugo de naranja natural</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--sienna">antioxidante</span>
-              <span class="item__tag item__tag--persimmon">sin azúcar añadida</span>
-            </div>
+            <p class="item__name">cappuccino</p>
+            <p class="item__desc">espresso sencillo, leche vaporizada, espuma firme.</p>
           </div>
-          <span class="item__price">$10.500</span>
+          <span class="item__price">$13.000</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Green Detox</p>
-            <p class="item__desc">Pepino, apio, manzana verde, espinaca, limón, jengibre</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--persimmon">vegano</span>
-              <span class="item__tag item__tag--persimmon">sin azúcar añadida</span>
-            </div>
+            <p class="item__name">latte</p>
+            <p class="item__desc">espresso sencillo, leche sedosa, taza alta.</p>
+          </div>
+          <span class="item__price">$13.000</span>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- II · TEA & MATCHA -->
+    <section class="section" id="tea">
+      <div class="section__header">
+        <span class="section__label">ii · té + matcha</span>
+        <h2 class="section__title">tea &amp; matcha.</h2>
+        <p class="section__sub">ceremonial grade · hojas sueltas</p>
+        <p class="section__desc">infusiones lentas. matcha batido al momento, tés servidos en tetera pequeña.</p>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">matcha <small style="font-family:Krub,sans-serif;font-weight:400;font-size:11px;color:rgba(59,59,59,0.40)">caliente o frío</small></p>
+            <p class="item__desc">ceremonial grade · batido + leche entera o vegetal.</p>
+          </div>
+          <span class="item__price">$23.500</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">té chai</p>
+            <p class="item__desc">cardamomo, canela, clavo y jengibre · leche vaporizada.</p>
+          </div>
+          <span class="item__price">$13.500</span>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- III · BEBIDAS ESPECIALES -->
+    <section class="section" id="especiales">
+      <div class="section__header">
+        <span class="section__label">iii · bebidas especiales</span>
+        <h2 class="section__title">bebidas especiales.</h2>
+        <p class="section__sub">lattes funcionales · chocolate</p>
+        <p class="section__note">el chocolate va con leche normal por defecto. adición leche de almendras <strong>+$7.000</strong>.</p>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">latte blue spirulina <span class="badge badge--house">house</span></p>
+            <p class="item__desc">espirulina azul, vainilla, leche de coco. el azul que comés.</p>
+          </div>
+          <span class="item__price">$21.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">latte pink pitaya <span class="badge badge--new">nuevo</span></p>
+            <p class="item__desc">pitaya rosada, vainilla, leche entera o vegetal.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">golden latte</p>
+            <p class="item__desc">cúrcuma, jengibre, pimienta negra, miel y leche caliente.</p>
+          </div>
+          <span class="item__price">$14.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">chocolate caliente</p>
+            <p class="item__desc">cacao 70% derretido lento · amargo y limpio.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- IV · SOFT DRINKS -->
+    <section class="section" id="softdrinks">
+      <div class="section__header">
+        <span class="section__label">iv · refrescos</span>
+        <h2 class="section__title">soft drinks.</h2>
+        <p class="section__sub">limonadas · sueros · agua</p>
+        <p class="section__note">adición soda <strong>+$3.000</strong> en cualquier limonada.</p>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">suero limón mandarino</p>
+            <p class="item__desc">electrolitos caseros · limón, mandarina, sal rosada.</p>
           </div>
           <span class="item__price">$11.000</span>
         </div>
 
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- SNACKS -->
-    <section class="section" id="snacks">
-      <div class="section__header">
-        <span class="section__label">04</span>
-        <h2 class="section__title">snacks</h2>
-        <p class="section__desc">Para completar tu entrenamiento o simplemente darte un gusto.</p>
-      </div>
-      <div class="items">
-
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Energy Balls (x3)</p>
-            <p class="item__desc">Dátiles, avena, mantequilla de maní, cacao, semillas de chía</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--persimmon">vegano</span>
-            </div>
-          </div>
-          <span class="item__price">$8.000</span>
-        </div>
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Protein Bar Casera</p>
-            <p class="item__desc">Nuestra barra artesanal de avena, proteína y chocolate oscuro</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">15g proteína</span>
-            </div>
-          </div>
-          <span class="item__price">$7.000</span>
-        </div>
-
-        <div class="item">
-          <div class="item__body">
-            <p class="item__name">Toast de Aguacate</p>
-            <p class="item__desc">Pan de semillas, aguacate, huevo pochado, semillas de girasol, limón</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--thistle">18g proteína</span>
-              <span class="item__tag item__tag--sienna">alto en grasas buenas</span>
-            </div>
+            <p class="item__name">limonada flor de jamaica</p>
+            <p class="item__desc">infusión fría de jamaica, limón, miel ligera.</p>
           </div>
           <span class="item__price">$12.000</span>
         </div>
 
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">limonada carbón activado</p>
+            <p class="item__desc">limón, carbón activado, jengibre. el detox del día.</p>
+          </div>
+          <span class="item__price">$15.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">limonada pink pitaya <span class="badge badge--house">house</span></p>
+            <p class="item__desc">pitaya rosada, limón, hierbabuena fresca.</p>
+          </div>
+          <span class="item__price">$19.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">orange cajun boost</p>
+            <p class="item__desc">naranja exprimida, cúrcuma, jengibre, pizca de cayena.</p>
+          </div>
+          <span class="item__price">$14.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">agua manantial</p>
+            <p class="item__desc">botella 500ml.</p>
+          </div>
+          <span class="item__price">$6.900</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">agua manantial con gas</p>
+            <p class="item__desc">botella 500ml.</p>
+          </div>
+          <span class="item__price">$6.900</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">coca cola zero</p>
+            <p class="item__desc">lata 330ml.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
       </div>
     </section>
 
     <hr class="divider">
 
-    <!-- BEBIDAS -->
-    <section class="section" id="bebidas">
+    <!-- V · SHAKES -->
+    <section class="section" id="shakes">
       <div class="section__header">
-        <span class="section__label">05</span>
-        <h2 class="section__title">bebidas</h2>
-        <p class="section__desc">Café, matcha y opciones funcionales para hidratarte.</p>
+        <span class="section__label">v · shakes</span>
+        <h2 class="section__title">shakes.</h2>
+        <p class="section__sub">clásico con banano · skinny sin banano</p>
+        <p class="section__desc">dos versiones. <strong>clásico</strong> lleva banano — más cremoso, más dulce. <strong>skinny</strong> sin banano — más liviano, menos azúcar. mismo precio.</p>
       </div>
       <div class="items">
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Matcha Latte</p>
-            <p class="item__desc">Matcha ceremonial, leche de avena, miel</p>
+            <p class="item__name">tropical</p>
+            <p class="item__desc">mango, piña, maracuyá, leche de coco.</p>
           </div>
-          <span class="item__price">$9.000</span>
+          <span class="item__price">$22.000</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Cold Brew</p>
-            <p class="item__desc">Café de origen, extracción en frío 12h, servido solo o con leche</p>
+            <p class="item__name">snickers <span class="badge badge--house">house</span></p>
+            <p class="item__desc">cacao, dátiles, maní, proteína whey, leche.</p>
           </div>
-          <span class="item__price">$8.500</span>
+          <span class="item__price">$24.000</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Agua de Coco Natural</p>
-            <p class="item__desc">Coco fresco, electrolitos naturales</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--persimmon">hidratante</span>
-            </div>
+            <p class="item__name">alpinito</p>
+            <p class="item__desc">yogurt griego, fresa, vainilla, granola al lado.</p>
           </div>
-          <span class="item__price">$7.000</span>
+          <span class="item__price">$22.000</span>
         </div>
 
         <div class="item">
           <div class="item__body">
-            <p class="item__name">Kombucha</p>
-            <p class="item__desc">Jengibre-limón o frutos rojos. Fermentada, probiótica.</p>
-            <div class="item__tags">
-              <span class="item__tag item__tag--sienna">probiótico</span>
-            </div>
+            <p class="item__name">pumpkin</p>
+            <p class="item__desc">calabaza asada, canela, nuez moscada, dátiles.</p>
           </div>
-          <span class="item__price">$9.500</span>
+          <span class="item__price">$23.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">piña colada</p>
+            <p class="item__desc">piña, leche de coco, vainilla, ralladura de lima.</p>
+          </div>
+          <span class="item__price">$22.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">brownie cookie</p>
+            <p class="item__desc">cacao, mantequilla de almendras, dátiles, chips de cacao.</p>
+          </div>
+          <span class="item__price">$24.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">salted frappuccino</p>
+            <p class="item__desc">espresso, sal marina, dátiles, hielo, leche.</p>
+          </div>
+          <span class="item__price">$23.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">matcha</p>
+            <p class="item__desc">matcha ceremonial, vainilla, leche entera o vegetal.</p>
+          </div>
+          <span class="item__price">$25.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">pistacho <span class="badge badge--new">nuevo</span></p>
+            <p class="item__desc">pasta de pistacho, vainilla, leche, miel ligera.</p>
+          </div>
+          <span class="item__price">$26.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">batido verde</p>
+            <p class="item__desc">espinaca, kale, manzana verde, jengibre, limón.</p>
+          </div>
+          <span class="item__price">$22.000</span>
         </div>
 
       </div>
     </section>
 
-    <!-- ADD-ONS -->
+    <hr class="divider">
+
+    <!-- VI · ALL DAY BRUNCH -->
+    <section class="section" id="brunch">
+      <div class="section__header">
+        <span class="section__label">vi · cocina</span>
+        <h2 class="section__title">all day brunch.</h2>
+        <p class="section__sub">servido todo el día · 7am – 4pm</p>
+        <p class="section__desc">la mesa principal. bowls, waffles, pancakes y huevos — servido a cualquier hora del día.</p>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">açaí bowl <span class="badge badge--house">house</span></p>
+            <p class="item__desc">base · açaí puro + dos frutas + dos toppings a elección. pedí extras desde la lista de toppings.</p>
+          </div>
+          <span class="item__price">$46.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">parfait zero</p>
+            <p class="item__desc">yogurt griego sin azúcar, granola casera, frutos rojos.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">chicken waffle</p>
+            <p class="item__desc">pollo crocante, waffle dorado, miel de maple, sal en escamas.</p>
+          </div>
+          <span class="item__price">$45.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">waffle pan de yuca</p>
+            <p class="item__desc">masa de pan de yuca con queso costeño, prensada en waffle, miel.</p>
+          </div>
+          <span class="item__price">$23.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">pancakes <span class="badge badge--popular">3 sabores</span></p>
+            <p class="item__desc">stack de tres · base con miel de maple. elegí sabor: <em>proteína</em> (whey vainilla + banano), <em>frutos rojos</em> (compota tibia + yogurt griego) o <em>chocolate</em> (cacao + chips 70%).</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">tostadas francesas</p>
+            <p class="item__desc">brioche remojado en huevo y vainilla, frutos rojos, miel.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">egg sandwich</p>
+            <p class="item__desc">huevos batidos, queso, tocineta, salsa secreta, brioche.</p>
+          </div>
+          <span class="item__price">$28.000</span>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- VII · ÁRMALO TÚ -->
+    <section class="section" id="armalo">
+      <div class="section__header">
+        <span class="section__label">vii · ármalo tú</span>
+        <h2 class="section__title">ármalo tú.</h2>
+        <p class="section__sub">4 pasos · base + proteína + vegetales + salsa</p>
+        <p class="section__desc">elegí pan, proteína, vegetales y salsa. los vegetales y la salsa van incluidos. lo armamos al momento.</p>
+      </div>
+      <div class="builder-card">
+        <div class="builder-steps">
+          <div class="builder-step">
+            <p class="builder-step__num">01 · elegí tu base</p>
+            <p class="builder-step__title">pan / base</p>
+            <ul class="builder-step__options">
+              <li>pan bolillo</li>
+              <li>pan ciabatta</li>
+              <li>pan árabe</li>
+              <li>tortillas</li>
+              <li>totopos</li>
+              <li>bowl de papas</li>
+              <li>arepa</li>
+            </ul>
+          </div>
+          <div class="builder-step">
+            <p class="builder-step__num">02 · elegí tu proteína</p>
+            <p class="builder-step__title">proteína</p>
+            <ul class="builder-step__options">
+              <li>roast beef</li>
+              <li>pollo apanado</li>
+              <li>cerdo</li>
+              <li>kebab</li>
+              <li>huevo</li>
+              <li>jamón</li>
+            </ul>
+          </div>
+          <div class="builder-step">
+            <p class="builder-step__num">03 · vegetales incluidos</p>
+            <p class="builder-step__title">vegetales</p>
+            <ul class="builder-step__options">
+              <li>cebolla morada</li>
+              <li>cebolla blanca</li>
+              <li>coleslaw</li>
+              <li>tomates asados</li>
+              <li>tomate fresco</li>
+              <li>pepino</li>
+              <li>pepinillos</li>
+            </ul>
+          </div>
+          <div class="builder-step">
+            <p class="builder-step__num">04 · salsa incluida</p>
+            <p class="builder-step__title">salsas</p>
+            <ul class="builder-step__options">
+              <li>pickle</li>
+              <li>salsa alioli</li>
+              <li>bbq</li>
+              <li>buffalo</li>
+              <li>mostaza</li>
+              <li>tzatziki</li>
+              <li>miel</li>
+              <li>chick-fil-a</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- VIII · THE USUALS -->
+    <section class="section" id="usuals">
+      <div class="section__header">
+        <span class="section__label">viii · favoritos de la casa</span>
+        <h2 class="section__title">the usuals.</h2>
+        <p class="section__desc">los favoritos de todos. listos en menos de 8 minutos.</p>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">cubanito</p>
+            <p class="item__desc">pan bolillo · cerdo · jamón · pepinillos · mostaza · coleslaw.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">bbq roast beef</p>
+            <p class="item__desc">pan ciabatta · roast beef · cebolla morada · tomates asados · bbq.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">chicken buffalo <span class="badge badge--house">house</span></p>
+            <p class="item__desc">pan árabe · pollo apanado · coleslaw · pepinillos · buffalo.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">gyro <span class="badge badge--new">nuevo</span></p>
+            <p class="item__desc">pan árabe · kebab · cebolla morada · tomate fresco · pepino · tzatziki.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- IX · ON THE SIDE -->
+    <section class="section" id="side">
+      <div class="section__header">
+        <span class="section__label">ix · acompañamientos</span>
+        <h2 class="section__title">on the side.</h2>
+        <p class="section__desc">cosas pequeñas para acompañar el café o redondear un plato.</p>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">papas air fryer <small style="font-family:Krub,sans-serif;font-weight:400;font-size:11px;color:rgba(59,59,59,0.40)">100g</small></p>
+            <p class="item__desc">papas en bastón, sal en escamas, alioli al lado.</p>
+          </div>
+          <span class="item__price">$15.500</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">papas air fryer <small style="font-family:Krub,sans-serif;font-weight:400;font-size:11px;color:rgba(59,59,59,0.40)">200g</small></p>
+            <p class="item__desc">porción doble · para compartir.</p>
+          </div>
+          <span class="item__price">$18.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">arepa en chapa</p>
+            <p class="item__desc">arepa fina prensada en plancha caliente, mantequilla.</p>
+          </div>
+          <span class="item__price">$17.000</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">fruta de temporada</p>
+            <p class="item__desc">tres frutas frescas del mercado de la semana.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">brownie</p>
+            <p class="item__desc">cacao 70%, masa densa, sal en escamas.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">blondie</p>
+            <p class="item__desc">mantequilla dorada, chips de chocolate blanco, vainilla.</p>
+          </div>
+          <span class="item__price">$16.500</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">galleta chocochips</p>
+            <p class="item__desc">horneada el mismo día · masa madre + chips 70%.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">frozen yogurt</p>
+            <p class="item__desc">yogurt natural congelado · pedí topping a la barra.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">croissant</p>
+            <p class="item__desc">mantequilla francesa · horneado en casa.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">croissant de almendras</p>
+            <p class="item__desc">crema de almendras, almendras laminadas, azúcar glas.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">palito de queso</p>
+            <p class="item__desc">masa hojaldrada con queso parrillado.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+        <div class="item">
+          <div class="item__body">
+            <p class="item__name">pan de chocolate</p>
+            <p class="item__desc">hojaldre, dos barras de chocolate 70%.</p>
+          </div>
+          <span class="item__price--tbd">precio por definir</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- X · EXTRAS -->
     <div class="extras-card" id="extras">
-      <h2 class="extras-card__title">add-ons</h2>
+      <span class="section__label" style="margin-bottom:4px">x · extras</span>
+      <h2 class="section__title">extras.</h2>
+      <p class="section__desc" style="margin-top:8px">se suman a cualquier plato. suplementos y extras de cocina.</p>
       <div class="extras-grid">
         <div class="extra-item">
-          <span class="extra-item__name">Proteína extra (30g)</span>
+          <div>
+            <p class="extra-item__name">proteína (whey)</p>
+            <p class="extra-item__desc">scoop vainilla o chocolate · en cualquier shake</p>
+          </div>
+          <span class="extra-item__price">+$9.000</span>
+        </div>
+        <div class="extra-item">
+          <div>
+            <p class="extra-item__name">colágeno</p>
+            <p class="extra-item__desc">péptidos sin sabor · café, shake o agua</p>
+          </div>
+          <span class="extra-item__price">+$8.000</span>
+        </div>
+        <div class="extra-item">
+          <div>
+            <p class="extra-item__name">ashwagandha</p>
+            <p class="extra-item__desc">adaptógeno · bebida caliente o fría</p>
+          </div>
+          <span class="extra-item__price">+$7.000</span>
+        </div>
+        <div class="extra-item">
+          <div>
+            <p class="extra-item__name">vitamina c liposomal</p>
+            <p class="extra-item__desc">una dosis · alta absorción</p>
+          </div>
+          <span class="extra-item__price">+$7.000</span>
+        </div>
+        <div class="extra-item">
+          <div>
+            <p class="extra-item__name">electrolitos</p>
+            <p class="extra-item__desc">sales minerales sin azúcar · agua o limonada</p>
+          </div>
+          <span class="extra-item__price">+$7.000</span>
+        </div>
+        <div class="extra-item">
+          <div>
+            <p class="extra-item__name">creatina</p>
+            <p class="extra-item__desc">3g monohidrato · en shake o agua</p>
+          </div>
+          <span class="extra-item__price">+$7.000</span>
+        </div>
+        <div class="extra-item">
+          <div>
+            <p class="extra-item__name">vinagre de manzana</p>
+            <p class="extra-item__desc">shot · sin filtrar, con la madre</p>
+          </div>
           <span class="extra-item__price">+$3.000</span>
         </div>
         <div class="extra-item">
-          <span class="extra-item__name">Creatina (5g)</span>
-          <span class="extra-item__price">+$2.000</span>
+          <div>
+            <p class="extra-item__name">queso parrillado</p>
+            <p class="extra-item__desc">a cualquier sándwich del builder o the usuals</p>
+          </div>
+          <span class="extra-item__price">+$10.000</span>
         </div>
         <div class="extra-item">
-          <span class="extra-item__name">Colágeno (10g)</span>
-          <span class="extra-item__price">+$2.500</span>
-        </div>
-        <div class="extra-item">
-          <span class="extra-item__name">Semillas de chía</span>
-          <span class="extra-item__price">+$1.000</span>
-        </div>
-        <div class="extra-item">
-          <span class="extra-item__name">Mantequilla de maní</span>
-          <span class="extra-item__price">+$2.000</span>
-        </div>
-        <div class="extra-item">
-          <span class="extra-item__name">Granola artesanal</span>
-          <span class="extra-item__price">+$1.500</span>
-        </div>
-        <div class="extra-item">
-          <span class="extra-item__name">Spirulina</span>
-          <span class="extra-item__price">+$1.500</span>
-        </div>
-        <div class="extra-item">
-          <span class="extra-item__name">Leche de almendra</span>
-          <span class="extra-item__price">+$1.000</span>
+          <div>
+            <p class="extra-item__name">salsa alioli</p>
+            <p class="extra-item__desc">porción individual · ajo asado, aceite de oliva</p>
+          </div>
+          <span class="extra-item__price">+$5.500</span>
         </div>
       </div>
     </div>
@@ -651,18 +1146,18 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-brand">mitho wellness club</p>
-    <p class="footer-sub">protein bar · menu.mitho.co</p>
+    <p class="footer-handle">@mithowellnessclub · bogotá</p>
+    <p class="footer-legal">precios incluyen iva. propina voluntaria 10%.<br>carta sujeta a cambios.</p>
   </footer>
 
   <script>
-    // Highlight active nav pill on scroll
-    const sections = document.querySelectorAll('.section[id], .extras-card[id]');
+    const sections = document.querySelectorAll('section[id], div[id="extras"]');
     const pills = document.querySelectorAll('.nav__pill');
 
     function updateActive() {
       let current = '';
       sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        if (window.scrollY >= s.offsetTop - 130) current = s.id;
       });
       pills.forEach(p => {
         p.classList.toggle('active', p.getAttribute('href') === '#' + current);
