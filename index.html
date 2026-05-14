@@ -1266,13 +1266,23 @@
     const sections = document.querySelectorAll('section[id], div[id="extras"]');
     const pills = document.querySelectorAll('.nav__pill');
 
+    const nav = document.querySelector('.nav');
+
     function updateActive() {
       let current = '';
       sections.forEach(s => {
         if (window.scrollY >= s.offsetTop - 130) current = s.id;
       });
       pills.forEach(p => {
-        p.classList.toggle('active', p.getAttribute('href') === '#' + current);
+        const isActive = p.getAttribute('href') === '#' + current;
+        p.classList.toggle('active', isActive);
+        if (isActive) {
+          // Scroll nav horizontally so active pill is centered
+          const pillLeft = p.offsetLeft;
+          const pillWidth = p.offsetWidth;
+          const navWidth = nav.offsetWidth;
+          nav.scrollTo({ left: pillLeft - navWidth / 2 + pillWidth / 2, behavior: 'smooth' });
+        }
       });
     }
 
