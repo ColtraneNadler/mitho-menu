@@ -431,6 +431,71 @@
       .extras-grid    { grid-template-columns: 1fr; }
       .hero { padding: 48px 20px 36px; }
     }
+
+    /* Category hero */
+    .category-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px 48px;
+      background: #FAF3DD;
+    }
+    .category-hero__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+    .cat-card {
+      background: #fff;
+      border: 1.5px solid rgba(59,59,59,0.08);
+      border-radius: 20px;
+      padding: 28px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      gap: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 12px rgba(59,59,59,0.06);
+    }
+    .cat-card:hover, .cat-card:active {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(59,59,59,0.12);
+    }
+    .cat-card__icon { font-size: 36px; line-height: 1; }
+    .cat-card__title {
+      font-family: Raleway, sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #3B3B3B;
+      letter-spacing: -0.3px;
+    }
+    .cat-card__sub {
+      font-family: Krub, sans-serif;
+      font-size: 11px;
+      color: rgba(59,59,59,0.45);
+      line-height: 1.5;
+    }
+    .cat-hero__all {
+      background: transparent;
+      border: 1.5px solid rgba(59,59,59,0.2);
+      border-radius: 40px;
+      padding: 12px 28px;
+      font-family: Krub, sans-serif;
+      font-size: 13px;
+      color: rgba(59,59,59,0.6);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cat-hero__all:hover { border-color: #DD6E42; color: #DD6E42; }
+    #menu-content { display: none; }
+    #menu-content.visible { display: block; }
   </style>
 </head>
 <body>
@@ -468,6 +533,36 @@
 
   <!-- MENU -->
   <main class="menu">
+
+    <!-- CATEGORY HERO -->
+    <section class="category-hero" id="category-hero">
+      <div class="category-hero__grid">
+        <a href="#coffee" class="cat-card" onclick="hideHero()">
+          <div class="cat-card__icon">☕</div>
+          <div class="cat-card__title">Café &amp; Té</div>
+          <div class="cat-card__sub">café · matcha · chai · bebidas especiales</div>
+        </a>
+        <a href="#shakes" class="cat-card" onclick="hideHero()">
+          <div class="cat-card__icon">🥤</div>
+          <div class="cat-card__title">Protein Shakes</div>
+          <div class="cat-card__sub">clásico · skinny · batido verde · parfait</div>
+        </a>
+        <a href="#brunch" class="cat-card" onclick="hideHero()">
+          <div class="cat-card__icon">🍳</div>
+          <div class="cat-card__title">Brunch</div>
+          <div class="cat-card__sub">waffles · pancakes · bowls · tacos · chilaquiles</div>
+        </a>
+        <a href="#usuals" class="cat-card" onclick="hideHero()">
+          <div class="cat-card__icon">🍫</div>
+          <div class="cat-card__title">Postres</div>
+          <div class="cat-card__sub">brownie · blondie · frozen yogurt · galleta</div>
+        </a>
+      </div>
+      <button class="cat-hero__all" onclick="hideHero()">ver menú completo ↓</button>
+    </section>
+    <!-- END CATEGORY HERO -->
+
+    <div id="menu-content">
 
     <!-- I · COFFEE -->
     <section class="section" id="coffee">
@@ -657,7 +752,7 @@
             <p class="item__name">agua manantial</p>
             <p class="item__desc">botella 500ml.</p>
           </div>
-          <span class="item__price">$6.900</span>
+          <span class="item__price">$6.500</span>
         </div>
 
         <div class="item">
@@ -665,7 +760,7 @@
             <p class="item__name">agua manantial con gas</p>
             <p class="item__desc">botella 500ml.</p>
           </div>
-          <span class="item__price">$6.900</span>
+          <span class="item__price">$6.500</span>
         </div>
 
         <div class="item">
@@ -673,7 +768,7 @@
             <p class="item__name">coca cola zero</p>
             <p class="item__desc">lata 330ml.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$6.200</span>
         </div>
 
       </div>
@@ -696,7 +791,7 @@
             <p class="item__name">tropical</p>
             <p class="item__desc">mango, piña, maracuyá, leche de coco.</p>
           </div>
-          <span class="item__price">$22.000</span>
+          <span class="item__price">$35.000</span>
         </div>
 
         <div class="item">
@@ -704,7 +799,7 @@
             <p class="item__name">snickers <span class="badge badge--house">house</span></p>
             <p class="item__desc">cacao, dátiles, maní, proteína whey, leche.</p>
           </div>
-          <span class="item__price">$24.000</span>
+          <span class="item__price">$35.000</span>
         </div>
 
         <div class="item">
@@ -712,7 +807,7 @@
             <p class="item__name">alpinito</p>
             <p class="item__desc">yogurt griego, fresa, vainilla, granola al lado.</p>
           </div>
-          <span class="item__price">$22.000</span>
+          <span class="item__price">$35.000</span>
         </div>
 
         <div class="item">
@@ -720,7 +815,7 @@
             <p class="item__name">pumpkin</p>
             <p class="item__desc">calabaza asada, canela, nuez moscada, dátiles.</p>
           </div>
-          <span class="item__price">$23.000</span>
+          <span class="item__price">$35.000</span>
         </div>
 
         <div class="item">
@@ -728,7 +823,7 @@
             <p class="item__name">piña colada</p>
             <p class="item__desc">piña, leche de coco, vainilla, ralladura de lima.</p>
           </div>
-          <span class="item__price">$22.000</span>
+          <span class="item__price">$35.000</span>
         </div>
 
         <div class="item">
@@ -736,7 +831,7 @@
             <p class="item__name">brownie cookie</p>
             <p class="item__desc">cacao, mantequilla de almendras, dátiles, chips de cacao.</p>
           </div>
-          <span class="item__price">$24.000</span>
+          <span class="item__price">$37.000</span>
         </div>
 
         <div class="item">
@@ -744,7 +839,7 @@
             <p class="item__name">salted frappuccino</p>
             <p class="item__desc">espresso, sal marina, dátiles, hielo, leche.</p>
           </div>
-          <span class="item__price">$23.000</span>
+          <span class="item__price">$41.000</span>
         </div>
 
         <div class="item">
@@ -752,7 +847,7 @@
             <p class="item__name">matcha</p>
             <p class="item__desc">matcha ceremonial, vainilla, leche entera o vegetal.</p>
           </div>
-          <span class="item__price">$25.000</span>
+          <span class="item__price">$35.000</span>
         </div>
 
         <div class="item">
@@ -760,7 +855,7 @@
             <p class="item__name">pistacho <span class="badge badge--new">nuevo</span></p>
             <p class="item__desc">pasta de pistacho, vainilla, leche, miel ligera.</p>
           </div>
-          <span class="item__price">$26.000</span>
+          <span class="item__price">$41.000</span>
         </div>
 
         <div class="item">
@@ -768,7 +863,7 @@
             <p class="item__name">batido verde</p>
             <p class="item__desc">espinaca, kale, manzana verde, jengibre, limón.</p>
           </div>
-          <span class="item__price">$22.000</span>
+          <span class="item__price">$23.000</span>
         </div>
 
       </div>
@@ -799,7 +894,7 @@
             <p class="item__name">parfait zero</p>
             <p class="item__desc">yogurt griego sin azúcar, granola casera, frutos rojos.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$41.000</span>
         </div>
 
         <div class="item">
@@ -815,7 +910,7 @@
             <p class="item__name">waffle pan de yuca</p>
             <p class="item__desc">masa de pan de yuca con queso costeño, prensada en waffle, miel.</p>
           </div>
-          <span class="item__price">$23.000</span>
+          <span class="item__price">$26.000</span>
         </div>
 
         <div class="item">
@@ -823,7 +918,7 @@
             <p class="item__name">pancakes <span class="badge badge--popular">3 sabores</span></p>
             <p class="item__desc">stack de tres · base con miel de maple. elegí sabor: <em>proteína</em> (whey vainilla + banano), <em>frutos rojos</em> (compota tibia + yogurt griego) o <em>chocolate</em> (cacao + chips 70%).</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$40.000</span>
         </div>
 
         <div class="item">
@@ -929,7 +1024,7 @@
             <p class="item__name">cubanito</p>
             <p class="item__desc">pan bolillo · cerdo · jamón · pepinillos · mostaza · coleslaw.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$49.000</span>
         </div>
 
         <div class="item">
@@ -937,7 +1032,7 @@
             <p class="item__name">bbq roast beef</p>
             <p class="item__desc">pan ciabatta · roast beef · cebolla morada · tomates asados · bbq.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$52.000</span>
         </div>
 
         <div class="item">
@@ -945,7 +1040,7 @@
             <p class="item__name">chicken buffalo <span class="badge badge--house">house</span></p>
             <p class="item__desc">pan árabe · pollo apanado · coleslaw · pepinillos · buffalo.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$40.000</span>
         </div>
 
         <div class="item">
@@ -999,7 +1094,7 @@
             <p class="item__name">fruta de temporada</p>
             <p class="item__desc">tres frutas frescas del mercado de la semana.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$20.000</span>
         </div>
 
         <div class="item">
@@ -1007,7 +1102,7 @@
             <p class="item__name">brownie</p>
             <p class="item__desc">cacao 70%, masa densa, sal en escamas.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$17.000</span>
         </div>
 
         <div class="item">
@@ -1015,7 +1110,7 @@
             <p class="item__name">blondie</p>
             <p class="item__desc">mantequilla dorada, chips de chocolate blanco, vainilla.</p>
           </div>
-          <span class="item__price">$16.500</span>
+          <span class="item__price">$17.000</span>
         </div>
 
         <div class="item">
@@ -1023,7 +1118,7 @@
             <p class="item__name">galleta chocochips</p>
             <p class="item__desc">horneada el mismo día · masa madre + chips 70%.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$17.000</span>
         </div>
 
         <div class="item">
@@ -1031,7 +1126,7 @@
             <p class="item__name">frozen yogurt</p>
             <p class="item__desc">yogurt natural congelado · pedí topping a la barra.</p>
           </div>
-          <span class="item__price--tbd">precio por definir</span>
+          <span class="item__price">$21.000</span>
         </div>
 
         <div class="item">
@@ -1141,6 +1236,8 @@
       </div>
     </div>
 
+    </div>
+
   </main>
 
   <!-- FOOTER -->
@@ -1151,6 +1248,21 @@
   </footer>
 
   <script>
+    function hideHero() {
+      document.getElementById('category-hero').style.display = 'none';
+      document.getElementById('menu-content').classList.add('visible');
+      setTimeout(() => {
+        const hash = window.location.hash;
+        if (hash) {
+          const el = document.querySelector(hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    }
+    if (window.location.hash) {
+      hideHero();
+    }
+
     const sections = document.querySelectorAll('section[id], div[id="extras"]');
     const pills = document.querySelectorAll('.nav__pill');
 
