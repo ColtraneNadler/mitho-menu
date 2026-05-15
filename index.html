@@ -1902,6 +1902,14 @@
     }
 
     function applyPricesToDom() {
+      // Assign stable unique cart keys to every item so two items that map to the
+      // same Loggro product are still tracked as separate cart entries.
+      document.querySelectorAll('.item').forEach((itemEl, idx) => {
+        if (!itemEl.dataset.cartKey) {
+          itemEl.dataset.cartKey = String(idx);
+        }
+      });
+
       document.querySelectorAll('.item').forEach(itemEl => {
         const nameEl = itemEl.querySelector('.item__name');
         if (!nameEl) return;
@@ -1951,16 +1959,20 @@
 
     function addItemToCart(itemEl) {
       const loggroId = itemEl.dataset.loggroId;
+      const cartKey = itemEl.dataset.cartKey;
       const name = itemEl.dataset.name || getItemBaseName(itemEl.querySelector('.item__name'));
       const useMember = isMember() && itemEl.dataset.memberPrice;
       const price = useMember ? +itemEl.dataset.memberPrice : +itemEl.dataset.classicoPrice;
-      if (!loggroId || !price) return;
+      if (!loggroId || !price || !cartKey) return;
 
-      const existing = cart.find(c => c.loggroId === loggroId);
+      // Use cartKey (DOM index) so two different items that share a Loggro product
+      // ID are always treated as separate cart entries.
+      const existing = cart.find(c => c.cartKey === cartKey);
       if (existing) {
         existing.quantity += 1;
       } else {
         cart.push({
+          cartKey,
           loggroId,
           subProductId: loggroId,
           name,
@@ -1973,12 +1985,12 @@
       bumpCartButton();
     }
 
-    function changeQty(loggroId, delta) {
-      const item = cart.find(c => c.loggroId === loggroId);
+    function changeQty(cartKey, delta) {
+      const item = cart.find(c => c.cartKey === cartKey);
       if (!item) return;
       item.quantity += delta;
       if (item.quantity <= 0) {
-        cart = cart.filter(c => c.loggroId !== loggroId);
+        cart = cart.filter(c => c.cartKey !== cartKey);
       }
       saveCart();
     }
@@ -2041,9 +2053,9 @@
               <p class="cart-row__price">${formatCOP(item.unitPrice)} c/u${item.isMemberPrice ? ' · miembro' : ''}</p>
             </div>
             <div class="cart-row__qty">
-              <button type="button" aria-label="Quitar uno" onclick="changeQty('${escapeHtml(item.loggroId)}', -1)">−</button>
+              <button type="button" aria-label="Quitar uno" onclick="changeQty('${escapeHtml(item.cartKey)}', -1)">−</button>
               <span>${item.quantity}</span>
-              <button type="button" aria-label="Agregar uno" onclick="changeQty('${escapeHtml(item.loggroId)}', 1)">+</button>
+              <button type="button" aria-label="Agregar uno" onclick="changeQty('${escapeHtml(item.cartKey)}', 1)">+</button>
             </div>
             <div class="cart-row__total">${formatCOP(item.unitPrice * item.quantity)}</div>
           </div>
