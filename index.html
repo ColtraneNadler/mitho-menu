@@ -1849,7 +1849,11 @@
 
     window.loggroProducts = [];
     let cart = [];
-    try { cart = JSON.parse(localStorage.getItem(KEY.CART) || '[]'); } catch (e) { cart = []; }
+    try {
+      const raw = JSON.parse(localStorage.getItem(KEY.CART) || '[]');
+      // Drop stale entries that predate the cartKey field
+      cart = Array.isArray(raw) ? raw.filter(c => !!c.cartKey) : [];
+    } catch (e) { cart = []; }
 
     function isLoggedIn() { return !!localStorage.getItem(KEY.TOKEN); }
     function isMember()   { return localStorage.getItem(KEY.IS_MEMBER) === 'true'; }
@@ -1902,13 +1906,7 @@
     }
 
     function applyPricesToDom() {
-      // Assign stable unique cart keys to every item so two items that map to the
-      // same Loggro product are still tracked as separate cart entries.
-      document.querySelectorAll('.item').forEach((itemEl, idx) => {
-        if (!itemEl.dataset.cartKey) {
-          itemEl.dataset.cartKey = String(idx);
-        }
-      });
+
 
       document.querySelectorAll('.item').forEach(itemEl => {
         const nameEl = itemEl.querySelector('.item__name');
@@ -1919,6 +1917,11 @@
 
         itemEl.dataset.loggroId = product.id;
         itemEl.dataset.name = product.name;
+        // Stable cart key = normalized menu item name (independent of DOM order or Loggro ID)
+        if (!itemEl.dataset.cartKey) {
+          const nameEl2 = itemEl.querySelector('.item__name');
+          itemEl.dataset.cartKey = normalize(nameEl2 ? getItemBaseName(nameEl2) : product.name);
+        }
         if (product.memberPrice != null)   itemEl.dataset.memberPrice = product.memberPrice;
         if (product.classicoPrice != null) itemEl.dataset.classicoPrice = product.classicoPrice;
 
