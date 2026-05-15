@@ -525,7 +525,7 @@
     /* ── FLOATING CART BUTTON ── */
     .cart-btn {
       position: fixed;
-      bottom: max(24px, env(safe-area-inset-bottom) + 16px);
+      bottom: max(24px, calc(var(--sab, env(safe-area-inset-bottom, 0px)) + 16px));
       right: 24px;
       width: 56px;
       height: 56px;
@@ -604,6 +604,17 @@
       border-bottom: none;
     }
     .cart-panel.open { transform: translateY(0); }
+    /* Extend background below panel to cover iOS dynamic toolbar gap */
+    .cart-panel::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -2px;
+      right: -2px;
+      height: 120px;
+      background: var(--olive);
+      pointer-events: none;
+    }
     .cart-panel__header {
       display: flex;
       justify-content: space-between;
@@ -2285,6 +2296,20 @@
     }
 
     // ── INIT ──
+    // iOS Safari dynamic toolbar: keep --sab in sync with actual visual viewport bottom inset
+    function syncSafeArea() {
+      // After a short delay, read the computed safe-area-inset-bottom
+      const el = document.createElement('div');
+      el.style.cssText = 'position:fixed;bottom:0;left:0;height:env(safe-area-inset-bottom,0px);pointer-events:none;visibility:hidden';
+      document.body.appendChild(el);
+      const h = el.offsetHeight;
+      document.body.removeChild(el);
+      document.documentElement.style.setProperty('--sab', h + 'px');
+    }
+    syncSafeArea();
+    window.addEventListener('resize', syncSafeArea);
+    window.addEventListener('scroll', syncSafeArea, { passive: true });
+
     handleAuthTokenFromUrl().then(fetchProducts);
     renderCartBadge();
     renderCartPanel();
