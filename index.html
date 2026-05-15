@@ -1921,6 +1921,8 @@
         if (!product || product.isActive === false) return;
 
         itemEl.dataset.loggroId = product.id;
+        itemEl.dataset.subProductId = product.subProductId;
+        itemEl.dataset.memberSubProductId = product.memberSubProductId || product.subProductId;
         itemEl.dataset.name = product.name;
         // Stable cart key = normalized menu item name (independent of DOM order or Loggro ID)
         if (!itemEl.dataset.cartKey) {
@@ -1971,10 +1973,12 @@
       const name = itemEl.dataset.name || getItemBaseName(itemEl.querySelector('.item__name'));
       const useMember = isMember() && itemEl.dataset.memberPrice;
       const price = useMember ? +itemEl.dataset.memberPrice : +itemEl.dataset.classicoPrice;
-      if (!loggroId || !price || !cartKey) return;
+      // Use the correct Loggro subProduct _id for the selected variant
+      const subProductId = useMember
+        ? (itemEl.dataset.memberSubProductId || itemEl.dataset.subProductId)
+        : itemEl.dataset.subProductId;
+      if (!loggroId || !subProductId || !price || !cartKey) return;
 
-      // Use cartKey (DOM index) so two different items that share a Loggro product
-      // ID are always treated as separate cart entries.
       const existing = cart.find(c => c.cartKey === cartKey);
       if (existing) {
         existing.quantity += 1;
@@ -1982,7 +1986,7 @@
         cart.push({
           cartKey,
           loggroId,
-          subProductId: loggroId,
+          subProductId,
           name,
           quantity: 1,
           unitPrice: price,
