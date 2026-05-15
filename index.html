@@ -596,14 +596,19 @@
       padding-bottom: max(28px, env(safe-area-inset-bottom) + 12px);
       z-index: 400;
       transform: translateY(110%);
-      transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+      visibility: hidden;
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1), visibility 0s linear 0.28s;
       max-height: 80vh;
       display: flex;
       flex-direction: column;
       border: 1px solid rgba(250,243,221,0.15);
       border-bottom: none;
     }
-    .cart-panel.open { transform: translateY(0); }
+    .cart-panel.open {
+      transform: translateY(0);
+      visibility: visible;
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1), visibility 0s linear 0s;
+    }
     /* Extend background below panel to cover iOS dynamic toolbar gap */
     .cart-panel::after {
       content: '';
@@ -2056,9 +2061,9 @@
               <p class="cart-row__price">${formatCOP(item.unitPrice)} c/u${item.isMemberPrice ? ' · miembro' : ''}</p>
             </div>
             <div class="cart-row__qty">
-              <button type="button" aria-label="Quitar uno" onclick="changeQty('${escapeHtml(item.cartKey)}', -1)">−</button>
+              <button type="button" aria-label="Quitar uno" data-cart-key="${escapeHtml(item.cartKey)}" data-delta="-1" class="qty-btn">−</button>
               <span>${item.quantity}</span>
-              <button type="button" aria-label="Agregar uno" onclick="changeQty('${escapeHtml(item.cartKey)}', 1)">+</button>
+              <button type="button" aria-label="Agregar uno" data-cart-key="${escapeHtml(item.cartKey)}" data-delta="1" class="qty-btn">+</button>
             </div>
             <div class="cart-row__total">${formatCOP(item.unitPrice * item.quantity)}</div>
           </div>
@@ -2324,6 +2329,15 @@
     syncSafeArea();
     window.addEventListener('resize', syncSafeArea);
     window.addEventListener('scroll', syncSafeArea, { passive: true });
+
+    // Event delegation for cart qty buttons (avoids inline onclick + escaping issues)
+    document.getElementById('cart-list').addEventListener('click', function(e) {
+      const btn = e.target.closest('.qty-btn');
+      if (!btn) return;
+      const key = btn.dataset.cartKey;
+      const delta = parseInt(btn.dataset.delta, 10);
+      if (key && !isNaN(delta)) changeQty(key, delta);
+    });
 
     handleAuthTokenFromUrl().then(fetchProducts);
     renderCartBadge();
