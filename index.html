@@ -2184,6 +2184,12 @@
     // ── CHECKOUT ──
     function openCheckoutModal() {
       if (cart.length === 0) return;
+      if (!isLoggedIn()) {
+        closeCart();
+        openLoginModal();
+        document.getElementById('login-error').textContent = 'inicia sesión para hacer tu pedido';
+        return;
+      }
       closeCart();
       const modal = document.getElementById('checkout-modal');
       modal.classList.add('open');
@@ -2203,26 +2209,13 @@
       });
       summary += `<div class="checkout-row checkout-total"><strong>total</strong><strong>${formatCOP(cartSubtotal())}</strong></div></div>`;
 
-      let actions;
-      if (isLoggedIn()) {
-        actions = `
-          <input id="checkout-name" placeholder="tu nombre" value="${escapeHtml(getName())}" autocomplete="name">
-          <p class="checkout-hint">se procesará tu pedido automáticamente.</p>
-          <button class="btn-primary" id="pay-pickup-btn" onclick="payAtPickup()">confirmar pedido</button>
-        `;
-        if (isMember() && hasCard()) {
-          actions += `
-          <button class="btn-primary" id="charge-card-btn" onclick="chargeCardOnFile()">pagar con tarjeta guardada</button>
-          `;
-        }
-      } else {
-        actions = `
-          <input id="checkout-name" placeholder="tu nombre" autocomplete="name">
-          <input id="checkout-email" placeholder="email (opcional)" type="email" autocomplete="email">
-          <p class="checkout-hint">reservá tu pedido — pagás al recoger en la barra.</p>
-          <button class="btn-primary" id="pay-pickup-btn" onclick="payAtPickup()">pedir y pagar al recoger</button>
-        `;
-      }
+      const hint = hasCard()
+        ? 'se cobrará a tu tarjeta guardada'
+        : 'pagas al recoger en la barra';
+      const actions = `
+        <p class="checkout-hint">${hint}</p>
+        <button class="btn-primary" id="pay-pickup-btn" onclick="payAtPickup()">confirmar pedido</button>
+      `;
 
       body.innerHTML = summary + '<div class="checkout-actions">' + actions + '</div>' + '<p id="checkout-error" class="checkout-error"></p>';
     }
@@ -2267,13 +2260,9 @@
     }
 
     async function payAtPickup() {
-      const name = document.getElementById('checkout-name').value.trim();
-      const emailInput = document.getElementById('checkout-email');
-      const email = emailInput ? emailInput.value.trim() : (localStorage.getItem('mitho_menu_email') || '');
       const errEl = document.getElementById('checkout-error');
       const btn = document.getElementById('pay-pickup-btn');
       errEl.textContent = '';
-      if (!name) { errEl.textContent = 'ingresá tu nombre'; return; }
 
       btn.disabled = true;
       btn.innerHTML = '<span class="spinner"></span> enviando...';
@@ -2292,8 +2281,7 @@
           headers: headers,
           body: JSON.stringify({
             items: mapCartToApi(),
-            customerName: name,
-            customerEmail: email,
+            customerName: getName(),
             wompiTransactionId: 'PAY_AT_PICKUP'
           })
         });
@@ -2303,7 +2291,7 @@
       } catch (e) {
         errEl.textContent = e.message || 'no se pudo crear el pedido';
         btn.disabled = false;
-        btn.textContent = 'pedir y pagar al recoger';
+        btn.textContent = 'confirmar pedido';
       }
     }
 
