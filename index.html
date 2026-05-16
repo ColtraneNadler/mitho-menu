@@ -2204,17 +2204,22 @@
       summary += `<div class="checkout-row checkout-total"><strong>total</strong><strong>${formatCOP(cartSubtotal())}</strong></div></div>`;
 
       let actions;
-      if (isLoggedIn() && isMember() && hasCard()) {
+      if (isLoggedIn()) {
         actions = `
-          <p class="checkout-hint">se cobrará a tu tarjeta guardada en prana.</p>
-          <button class="btn-primary" id="charge-card-btn" onclick="chargeCardOnFile()">pagar con tarjeta guardada</button>
+          <input id="checkout-name" placeholder="tu nombre" value="${escapeHtml(getName())}" autocomplete="name">
+          <p class="checkout-hint">se procesará tu pedido automáticamente.</p>
+          <button class="btn-primary" id="pay-pickup-btn" onclick="payAtPickup()">confirmar pedido</button>
         `;
+        if (isMember() && hasCard()) {
+          actions += `
+          <button class="btn-primary" id="charge-card-btn" onclick="chargeCardOnFile()">pagar con tarjeta guardada</button>
+          `;
+        }
       } else {
-        const nameVal = getName();
         actions = `
-          <input id="checkout-name" placeholder="tu nombre" value="${escapeHtml(nameVal)}" autocomplete="name">
+          <input id="checkout-name" placeholder="tu nombre" autocomplete="name">
           <input id="checkout-email" placeholder="email (opcional)" type="email" autocomplete="email">
-          <p class="checkout-hint">${isLoggedIn() && isMember() && !hasCard() ? 'aún no tenés tarjeta guardada en prana. ' : ''}reservá tu pedido — pagás al recoger en la barra.</p>
+          <p class="checkout-hint">reservá tu pedido — pagás al recoger en la barra.</p>
           <button class="btn-primary" id="pay-pickup-btn" onclick="payAtPickup()">pedir y pagar al recoger</button>
         `;
       }
@@ -2263,7 +2268,8 @@
 
     async function payAtPickup() {
       const name = document.getElementById('checkout-name').value.trim();
-      const email = document.getElementById('checkout-email').value.trim();
+      const emailInput = document.getElementById('checkout-email');
+      const email = emailInput ? emailInput.value.trim() : (localStorage.getItem('mitho_menu_email') || '');
       const errEl = document.getElementById('checkout-error');
       const btn = document.getElementById('pay-pickup-btn');
       errEl.textContent = '';
@@ -2278,9 +2284,12 @@
       // (?id=xxx&...) and pass it here as wompiTransactionId. Requires backend to
       // verify the transaction status before fulfilling.
       try {
+        const headers = { 'Content-Type': 'application/json' };
+        const token = localStorage.getItem(KEY.TOKEN);
+        if (token) headers['Authorization'] = 'Bearer ' + token;
         const res = await fetch(API_BASE + '/menu/order', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: headers,
           body: JSON.stringify({
             items: mapCartToApi(),
             customerName: name,
